@@ -1,0 +1,506 @@
+:root {
+  /* Colors */
+  --primary: #0156fe;
+  /* --secondary: #282973; */
+  --dark: #0c0c0c;
+  --light: #f1f1f0;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Fonts */
+  --font-heading: "Degular", sans-serif;
+  --font-body: "Rubik", sans-serif;
+
+  /* Spacing */
+  --padding-type1: 16px 20px;
+  --padding-type2: 24px 32px;
+  --margin-type1: 12px 16px;
+
+  /* Glass Effect Vars */
+  --glass-bg: #0c0c0c1a;
+  --glass-brd: #ffffff26;
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  --glass-radius: 12px;
+  --glass-blur: 2px;
+}
+
+.divider {
+  width: min(80%, 100rem);
+  height: 2px; /* thin line */
+  margin: 1.2rem auto;
+  position: relative;
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsla(60, 3%, 94%, 0.6),
+    transparent
+  );
+}
+
+/* ===============================
+   Glass Button
+=================================*/
+
+/* Base button */
+.glass-btn {
+  position: relative;
+  padding: 4px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 6px;
+  font-size: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 10px 10px var(--glass-shadow);
+
+  transition: color 0.3s ease;
+}
+
+/* ===============================
+   Default smoky highlights (white)
+=================================*/
+.glass-btn::before,
+.glass-btn::after {
+  content: "";
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* bottom-left */
+.glass-btn::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    4.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+
+/* top-right */
+.glass-btn::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    184.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+
+/* ===============================
+   Hover overlay (blue highlights)
+=================================*/
+.glass-hover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* let clicks pass */
+  overflow: hidden;
+}
+
+.glass-hover::before,
+.glass-hover::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+/* bottom-left blue */
+.glass-hover::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 10%;
+  background: linear-gradient(8deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+
+/* top-right blue */
+.glass-hover::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 10%;
+  background: linear-gradient(188deg, #0156fe 10%, rgba(12, 12, 12, 1) 59%);
+}
+
+/* ===============================
+   Hover state transitions
+=================================*/
+.glass-btn:hover::before,
+.glass-btn:hover::after {
+  opacity: 0; /* hide white ones */
+}
+
+.glass-btn:hover .glass-hover::before {
+  background: linear-gradient(7.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+
+.glass-btn:hover .glass-hover::after {
+  background: linear-gradient(187.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+
+.glass-btn:hover .glass-hover::before,
+.glass-btn:hover .glass-hover::after {
+  opacity: 0.75;
+  width: 80%;
+  height: 40%;
+}
+
+/* ===============================
+   Glass Button Rounded
+=================================*/
+.glass-btn-rounded {
+  position: relative;
+  padding: 4px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  transition: color 0.3s ease;
+}
+
+/* White smoky highlights */
+.glass-btn-rounded::before,
+.glass-btn-rounded::after {
+  content: "";
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.glass-btn-rounded::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    4.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+
+.glass-btn-rounded::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    184.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+
+/* ===============================
+   Hover overlay (black gradients at top)
+=================================*/
+.glass-btn-rounded-ba {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.glass-btn-rounded-ba::before,
+.glass-btn-rounded-ba::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  top: 50%;
+  width: 25%;
+  height: 100%;
+  background: radial-gradient(circle, #0e0e0e 0%, #0c0c0c00 100%);
+}
+
+/* top-left gradient */
+.glass-btn-rounded-ba::before {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* top-right gradient */
+.glass-btn-rounded-ba::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* ===============================
+   All Projects CTA
+=================================*/
+.all-projects_cta {
+  position: relative;
+  cursor: pointer;
+
+  background: var(--glass-bg);
+  box-shadow: inset 0 10px 10px var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur)); /* Safari */
+  p,
+  img {
+    position: relative;
+    z-index: 2; /* keep content above overlay */
+    line-height: 1;
+    color: #eee;
+    opacity: 0.75;
+    transform: rotate(0deg);
+    transition: 0.3s ease all;
+    scale: 1;
+  }
+}
+
+/* Gradient overlay */
+.all-projects_cta::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  transform: translateX(-50%);
+  width: 115%;
+  height: 115%;
+  background: linear-gradient(
+    to left,
+    rgba(12, 12, 12, 1) 0%,
+    rgba(12, 12, 12, 1) 30%,
+    rgba(12, 12, 12, 0.7) 60%,
+    rgba(12, 12, 12, 0) 100%
+  );
+  z-index: 1;
+  transition: transform 0.3s linear;
+  transform: translateX(0); /* default */
+  pointer-events: none;
+}
+
+/* On hover – slide left */
+.all-projects_cta:hover::after {
+  transform: translateX(100%);
+}
+
+.all-projects_cta:hover img {
+  transform: rotate(45deg);
+}
+
+/* ---------------------------
+   Project Card Info Section
+---------------------------- */
+.project-info {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1); /* default subtle background */
+  backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+}
+
+/* Hover background color change */
+.project-info:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------------------------
+   Arrow Hover CTA
+---------------------------- */
+.arrow-container {
+  position: relative;
+  cursor: pointer;
+  rotate: -30deg; /* gives a tilted arrow style */
+  overflow: hidden; /* keeps sliding arrows inside */
+}
+
+/* Arrow track (sliding row of arrows) */
+.arrow-track {
+  position: absolute;
+  left: -27px; /* initial offset */
+  transition: left 0.4s ease-in-out;
+}
+
+/* Slide arrows when hovering info bar or arrow container */
+.project-info:hover .arrow-track,
+.arrow-container:hover .arrow-track {
+  left: -1px;
+}
+
+/* ---------------------------
+   Project Image
+---------------------------- */
+.project-card img {
+  transition: filter 0.4s ease-in-out;
+  filter: grayscale(100%);
+}
+
+.project-card img:hover,
+.project-info:hover ~ img, /* not valid */
+.project-card:hover img {
+  filter: grayscale(0%);
+}
+
+.services-list_items {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-list_items::before,
+.services-list_items::after {
+  content: "";
+  position: absolute;
+  opacity: 1;
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+/* bottom-left blue */
+.services-list_items::before {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
+}
+
+/* top-right blue */
+.services-list_items::after {
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
+}
+
+/* ===============================
+   Reusable Glass Card
+   (Used in Services, Features, etc.)
+=================================*/
+.reusable-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 32px;
+
+  /* glassmorphism base */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* Gradient highlights (hidden by default) */
+.reusable-card::before,
+.reusable-card::after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+/* bottom-left highlight */
+.reusable-card::before {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
+}
+
+/* top-right highlight */
+.reusable-card::after {
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
+}
+
+/* Divider inside card */
+.card-divider {
+  width: min(80%, 100rem);
+  height: 2px;
+  margin: 1.2rem auto;
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsla(60, 3%, 94%, 0.6),
+    transparent
+  );
+  transition: background 0.3s ease;
+}
+
+/* ===============================
+   Hover Effects
+=================================*/
+.reusable-card:hover::before,
+.reusable-card:hover::after {
+  opacity: 1; /* show gradients */
+}
+
+.reusable-card:hover .card-divider {
+  background: linear-gradient(to right, transparent, #0156fe, transparent);
+}
+
+.reusable-card:hover .card-step {
+  background: #0155fe14;
+}
+
+/* ===============================
+   Number Circle with Animated Border
+=================================*/
+.card-step {
+  position: relative;
+  font-weight: 600;
+  color: #fff;
+  background: var(--glass-bg);
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #ffffff4d, -1px -1px 1px #ffffff4d;
+  transition: 0.3s all ease;
+}
+
+
+
+/* ===============================
+  Contact Page Blue Line
+=================================*/
+
+.contact-blue {
+  position: relative;
+}
+.contact-blue::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 360px;
+  top: 0;
+  background: url("../assets/ContactSection.png") no-repeat top;
+  background-size: auto;
+  z-index: -1;
+}
+
+

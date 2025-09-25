@@ -1,0 +1,249 @@
+/* ===========================================
+   MAIN NAVIGATION CONTAINER
+   =========================================== */
+nav {
+  width: 100%;
+  max-width: 100dvw;
+  height: auto;
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+  margin-top: 48px;
+}
+
+.nav-bar {
+  transition: background-color 0.3s ease;
+}
+
+.navbar--transparent {
+  background-color: transparent;
+}
+
+/* Navigation container with max-width and centering */
+.nav-bar__container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 24px 12px;
+  height: 66px;
+}
+
+/* Main navigation content wrapper */
+.nav-bar__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 12px;
+}
+
+/* ===========================================
+     LOGO SECTION
+     =========================================== */
+.nav-bar__logo,
+.nav-bar__logo img {
+  height: 34px;
+  width: auto;
+  margin-left: 3px;
+}
+
+/* ===========================================
+     DESKTOP NAVIGATION LINKS
+=========================================== */
+.nav-bar_page_links {
+  display: flex;
+  align-items: center;
+}
+
+/* Individual navigation links with hover effect */
+.nav-bar_links {
+  position: relative;
+  padding-inline: 16px;
+  cursor: pointer;
+}
+ 
+
+/* ===========================================
+     MOBILE MENU BUTTON (HAMBURGER)
+     =========================================== */
+.nav-bar_menu_button {
+  position: relative;
+  width: 4rem;
+  height: 2.8rem;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 6px;
+  display: none;
+  /* Hidden by default, shown on mobile */
+}
+
+/* Hamburger menu lines */
+.hamburger-line {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 0.125em;
+  background: currentColor;
+  transition: all 0.3s ease;
+}
+
+/* Top hamburger line */
+.hamburger-line:nth-child(1) {
+  top: 0.125em;
+}
+
+/* Top line animation when menu is active */
+.nav-bar_menu_button.is-active .hamburger-line:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotateZ(-135deg);
+}
+
+/* Middle hamburger line */
+.hamburger-line:nth-child(2) {
+  top: 40%;
+  width: 90%;
+}
+
+/* Middle line animation when menu is active (disappears) */
+.nav-bar_menu_button.is-active .hamburger-line:nth-child(2) {
+  top: 50%;
+  translate: 0% -50%;
+  scale: 0;
+}
+
+/* Bottom hamburger line */
+.hamburger-line:nth-child(3) {
+  top: 70%;
+  width: 40%;
+}
+
+/* Bottom line animation when menu is active */
+.nav-bar_menu_button.is-active .hamburger-line:nth-child(3) {
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%) rotateZ(135deg);
+}
+
+/* ===========================================
+     MOBILE MENU DROPDOWN
+     =========================================== */
+
+/* Mobile Nav Menu - hidden off top */
+.nav-menu_mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100vh;
+  z-index: -1;
+  padding: 108px 48px 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 1s ease, opacity 0.4s ease, z-index 0s 0.3s;
+}
+
+/* When active */
+.nav-menu_mobile.is-active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 1s ease, opacity 0.4s ease, z-index 0s 0s;
+  background-color: #121212;
+}
+
+/* Animate each li */
+.nav-menu_mobile li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  background-color: #121212;
+  padding: 8px;
+}
+
+.nav-menu_mobile li:hover {
+  color: #f1f1f0;
+}
+
+/* Staggered appearance of links */
+.nav-menu_mobile.is-active li:nth-child(1) {
+  transition-delay: 0.1s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu_mobile.is-active li:nth-child(2) {
+  transition-delay: 0.2s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu_mobile.is-active li:nth-child(3) {
+  transition-delay: 0.3s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu_mobile.is-active li:nth-child(4) {
+  transition-delay: 0.4s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu_mobile.is-active li:nth-child(5) {
+  transition-delay: 0.5s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile menu links */
+.nav-menu_links_mobile {
+  cursor: pointer;
+}
+
+/* Mobile menu links hover effect */
+.nav-menu_links_mobile:hover {
+  color: #f05023;
+}
+
+/* ===========================================
+     RESPONSIVE BREAKPOINTS
+     =========================================== */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .nav-bar_links {
+    padding-inline: 14px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .navbar--transparent {
+    background-color: rgba(20, 20, 20, 0.95);
+  }
+
+  /* Hide desktop navigation elements */
+  .nav-bar_page_links {
+    display: none;
+  }
+
+  .nav-bar__cta_desktop {
+    display: none;
+  }
+
+  /* Show mobile elements */
+  .nav-bar__cta_mobile {
+    display: flex;
+  }
+
+  .nav-bar_menu_button {
+    display: block;
+  }
+}

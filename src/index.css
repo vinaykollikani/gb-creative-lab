@@ -1,1 +1,634 @@
+/* ========================================================================
+   GB Creative Lab – Global Styles (Tailwind v4 + Vanilla CSS)
+   Notes:
+     - Visual parity preserved 1:1.
+     - Duplicates merged; later variable values retained to match current look.
+     - Structured into: Imports • Base • Fonts • Variables • Layout • Utilities
+       • Components (Glass, Buttons, Cards) • Sections • Effects • A11y/Helpers
+========================================================================= */
+
+/* ------------------------------------------------------------------------
+   1) Tailwind Import
+   (Tailwind utilities are available; we use @apply sparingly below)
+------------------------------------------------------------------------- */
 @import "tailwindcss";
+
+/* ------------------------------------------------------------------------
+   2) Base / Root
+------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--dark);
+  color: white;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ------------------------------------------------------------------------
+   3) Custom Fonts
+   (Loaded locally; keep names as referenced in components)
+------------------------------------------------------------------------- */
+@font-face {
+  font-family: "EditorialNew";
+  src: url("./assets/editorial-new/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
+    format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EditorialNew";
+  src: url("./assets/editorial-new/PPEditorialNew-UltralightItalic-BF644b214ff1e9b.otf")
+    format("opentype");
+  font-weight: 200;
+  font-display: swap;
+}
+.editorial-font {
+  font-family: "EditorialNew", sans-serif;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/Inter/Inter_24pt-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/Inter/Inter_24pt-ExtraLight.ttf") format("opentype");
+  font-weight: 200;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------------
+   4) CSS Variables (Design Tokens)
+   NOTE: Kept the *final* values you were already ending up with in the app.
+------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --primary: #0156fe;
+  --dark: #0c0c0c;
+  --light: #f1f1f0;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Fonts */
+  /* Your later :root set Degular for headings — preserved for parity */
+  --font-heading: "Degular", sans-serif;
+  --font-body: "Rubik", sans-serif;
+
+  /* Spacing */
+  --padding-type1: 16px 20px;
+  --padding-type2: 24px 32px;
+  --margin-type1: 12px 16px;
+
+  /* Glass Effect Vars */
+  --glass-bg: #0c0c0c1a;
+  --glass-brd: #ffffff26;
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  --glass-radius: 12px;
+  --glass-blur: 2px;
+}
+
+/* ------------------------------------------------------------------------
+   5) Layout Helpers
+------------------------------------------------------------------------- */
+.page-container {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.wrapper {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: var(--padding-type1);
+  font-family: "Inter", sans-serif;
+}
+.home-hero_section {
+  min-height: calc(100dvh - 116px);
+}
+
+/* ------------------------------------------------------------------------
+   6) Utilities (custom)
+------------------------------------------------------------------------- */
+.nav-link {
+  @apply text-[20px] cursor-pointer px-4 hover:text-blue-500 transition;
+}
+
+/* Debug helper (kept, but commented)
+ * {
+ *   border: 0.5px solid red;
+ * }
+*/
+
+/* ------------------------------------------------------------------------
+   7) Glassmorphism Components
+------------------------------------------------------------------------- */
+/* Base glass card */
+.glass-card-border {
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-brd);
+  border-radius: var(--glass-radius);
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur)); /* Safari */
+}
+.glass-card-border.contact-form-bg {
+  background: hsla(0, 0%, 93%, 0.03);
+}
+
+/* Small glass chip / icon backgrounds */
+.glass-effect {
+  background: rgba(1, 85, 254, 0.1);
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #ffffff4d, -1px -1px 1px #ffffff4d;
+  transition: 0.3s all ease;
+}
+.glass-effect.hover-effect:hover {
+  background: rgba(1, 85, 254, 0.2);
+}
+
+/* ------------------------------------------------------------------------
+   8) Dividers (global)
+------------------------------------------------------------------------- */
+.divider {
+  width: min(80%, 100rem);
+  height: 2px;
+  margin: 1.2rem auto;
+  position: relative;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsla(60, 3%, 94%, 0.6),
+    transparent
+  );
+}
+.about-divider-top,
+.about-divider-bottom,
+.footer-top-divider,
+.footer-bottom-divider {
+  position: relative;
+}
+.about-divider-top::after,
+.footer-top-divider::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 360px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: url("../src/assets/Divider.svg") no-repeat top;
+  background-size: auto;
+  z-index: -1;
+}
+.footer-top-divider::after {
+  background: url("../src/assets/Divider01.svg") no-repeat top;
+}
+.about-divider-bottom::before,
+.footer-bottom-divider::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  background: url("../src/assets/Divider.svg") no-repeat top;
+  background-size: auto;
+  z-index: -1;
+  transform: rotate(180deg);
+}
+
+/* ------------------------------------------------------------------------
+   9) Fancy Demo Block (kept for parity)
+------------------------------------------------------------------------- */
+.ttt {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: #0c0c0c;
+  box-shadow: 2px 2px 1px #ffffff4d, -2px -2px 1px #ffffff4d;
+}
+
+/* ------------------------------------------------------------------------
+   10) Glass Buttons
+------------------------------------------------------------------------- */
+/* Base button */
+.glass-btn {
+  position: relative;
+  padding: 4px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 6px;
+  font-size: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  transition: color 0.3s ease;
+}
+
+/* Smoky highlight (default white) */
+.glass-btn::before,
+.glass-btn::after {
+  content: "";
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+/* bottom-left */
+.glass-btn::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    4.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+/* top-right */
+.glass-btn::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    184.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+
+/* Hover overlay (blue highlights) */
+.glass-hover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.glass-hover::before,
+.glass-hover::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+/* bottom-left blue */
+.glass-hover::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 10%;
+  background: linear-gradient(8deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+/* top-right blue */
+.glass-hover::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 10%;
+  background: linear-gradient(188deg, #0156fe 10%, rgba(12, 12, 12, 1) 59%);
+}
+
+/* Hover state transitions */
+.glass-btn:hover::before,
+.glass-btn:hover::after {
+  opacity: 0; /* hide white ones */
+}
+.glass-btn:hover .glass-hover::before {
+  background: linear-gradient(7.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+.glass-btn:hover .glass-hover::after {
+  background: linear-gradient(187.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
+}
+.glass-btn:hover .glass-hover::before,
+.glass-btn:hover .glass-hover::after {
+  opacity: 0.75;
+  width: 80%;
+  height: 40%;
+}
+
+/* Rounded badge/button */
+.glass-btn-rounded {
+  position: relative;
+  padding: 4px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  transition: color 0.3s ease;
+}
+/* white smoky highlights */
+.glass-btn-rounded::before,
+.glass-btn-rounded::after {
+  content: "";
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.glass-btn-rounded::before {
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    4.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+.glass-btn-rounded::after {
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 20%;
+  background: linear-gradient(
+    184.5deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(12, 12, 12, 1) 50%
+  );
+}
+/* black radial caps on the badge */
+.glass-btn-rounded-ba {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 10;
+}
+.glass-btn-rounded-ba::before,
+.glass-btn-rounded-ba::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  top: 50%;
+  width: 25%;
+  height: 100%;
+  background: radial-gradient(circle, #0e0e0e 0%, #0c0c0c00 100%);
+}
+/* top-left gradient */
+.glass-btn-rounded-ba::before {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+/* top-right gradient */
+.glass-btn-rounded-ba::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* ------------------------------------------------------------------------
+   11) “See All Projects” CTA
+------------------------------------------------------------------------- */
+.all-projects_cta {
+  position: relative;
+  cursor: pointer;
+  background: var(--glass-bg);
+  box-shadow: inset 0 10px 10px var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.all-projects_cta p,
+.all-projects_cta img {
+  position: relative;
+  z-index: 2;
+  line-height: 1;
+  color: #eee;
+  opacity: 0.75;
+  transform: rotate(0deg);
+  transition: 0.3s ease all;
+  scale: 1;
+}
+/* Gradient overlay */
+.all-projects_cta::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  transform: translateX(-50%);
+  width: 115%;
+  height: 115%;
+  background: linear-gradient(
+    to left,
+    rgba(12, 12, 12, 1) 0%,
+    rgba(12, 12, 12, 1) 30%,
+    rgba(12, 12, 12, 0.7) 60%,
+    rgba(12, 12, 12, 0) 100%
+  );
+  z-index: 1;
+  transition: transform 0.3s linear;
+  transform: translateX(0);
+  pointer-events: none;
+}
+.all-projects_cta:hover::after {
+  transform: translateX(100%);
+}
+.all-projects_cta:hover img {
+  transform: rotate(45deg);
+}
+
+/* ------------------------------------------------------------------------
+   12) Projects – Card & Arrow CTA
+------------------------------------------------------------------------- */
+.project-info {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+}
+.project-info:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+/* Arrow */
+.arrow-container {
+  position: relative;
+  cursor: pointer;
+  rotate: -30deg;
+  overflow: hidden;
+}
+.arrow-track {
+  position: absolute;
+  left: -27px;
+  transition: left 0.4s ease-in-out;
+}
+.project-info:hover .arrow-track,
+.arrow-container:hover .arrow-track {
+  left: -1px;
+}
+
+/* Project image grayscale hover */
+.project-card img {
+  transition: filter 0.4s ease-in-out;
+  filter: grayscale(100%);
+}
+/* NOTE: The sibling selector combo below was commented as "not valid" in your file.
+   Leaving it commented to preserve intent without risking CSS errors.
+   .project-info:hover ~ img { ... }
+*/
+.project-card img:hover,
+.project-card:hover img {
+  filter: grayscale(0%);
+}
+
+/* ------------------------------------------------------------------------
+   13) Services – list mask highlights
+------------------------------------------------------------------------- */
+.services-list_items {
+  position: relative;
+  overflow: hidden;
+}
+.services-list_items::before,
+.services-list_items::after {
+  content: "";
+  position: absolute;
+  opacity: 1;
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+/* bottom-left blue */
+.services-list_items::before {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
+}
+/* top-right blue */
+.services-list_items::after {
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
+}
+
+/* ------------------------------------------------------------------------
+   14) Reusable Card (services/process etc.)
+------------------------------------------------------------------------- */
+.reusable-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 32px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-brd);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 10px var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+/* gradient highlights (hidden by default) */
+.reusable-card::before,
+.reusable-card::after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+/* bottom-left highlight */
+.reusable-card::before {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
+}
+/* top-right highlight */
+.reusable-card::after {
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 5%;
+  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
+}
+/* Divider inside card */
+.card-divider {
+  width: min(80%, 100rem);
+  height: 2px;
+  margin: 1.2rem auto;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsla(60, 3%, 94%, 0.6),
+    transparent
+  );
+  transition: background 0.3s ease;
+}
+/* Hover effects */
+.reusable-card:hover::before,
+.reusable-card:hover::after {
+  opacity: 1;
+}
+.reusable-card:hover .card-divider {
+  background: linear-gradient(to right, transparent, #0156fe, transparent);
+}
+.reusable-card:hover .card-step {
+  background: #0155fe14;
+}
+
+/* Number circle */
+.card-step {
+  position: relative;
+  font-weight: 600;
+  color: #fff;
+  background: var(--glass-bg);
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #ffffff4d, -1px -1px 1px #ffffff4d;
+  transition: 0.3s all ease;
+}
+
+/* ------------------------------------------------------------------------
+   15) Contact – blue line background
+------------------------------------------------------------------------- */
+.contact-blue {
+  position: relative;
+}
+.contact-blue::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 360px;
+  top: 0;
+  background: url("../assets/ContactSection.png") no-repeat top;
+  background-size: auto;
+  z-index: -1;
+}
+
+/* ------------------------------------------------------------------------
+   16) Accessibility & Helpers (non-visual)
+------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Mobile nav state hooks (style as you like; default is simple toggle) */
+.nav-bar__mobile-panel.is-closed { display: none; }
+.nav-bar__mobile-panel.is-open { display: block; }
