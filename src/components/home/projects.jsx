@@ -43,7 +43,7 @@ export default function ProjectsSection() {
             id="projects-heading"
             className="text-3xl sm:text-4xl lg:text-[64px] lg:leading-[1.1]"
           >
-            Our Featured <span className="italic">Projects</span>
+            Our Featured <span className="italic hero-heading-span editorial-font">Projects</span>
           </h2>
 
           {/* Description */}
@@ -54,7 +54,7 @@ export default function ProjectsSection() {
 
           {/* CTA */}
           <a
-            className="all-projects_cta flex justify-center items-center gap-2 mt-4 w-[160px] h-[40px] sm:w-[182px] sm:h-[42px] border-2 rounded-4xl"
+            className="all-projects_cta flex justify-center items-center gap-2 mt-4 w-[180px] px-2 h-[40px] sm:w-[200px] sm:h-[42px] border-2 rounded-4xl"
             href="/projects"
             aria-label="See all projects"
           >

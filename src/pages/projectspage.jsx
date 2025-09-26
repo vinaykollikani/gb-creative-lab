@@ -15,8 +15,7 @@ const gallery = [
 function projectspage() {
   return (
     <>
-      <section className="page-container relative" aria-label="Hero">
-        {/* Background */}
+            {/* Background */}
         <div className="absolute inset-0 -z-10" aria-hidden="true">
           <img
             src={LandingPageBG}
@@ -26,12 +25,14 @@ function projectspage() {
             className="w-full h-full object-cover select-none pointer-events-none"
           />
         </div>
+      <section className="page-container relative" aria-label="Hero">
+
 
         <div className="projects-hero_section wrapper flex items-center justify-center mt-16 lg:mt-24 max-h-[50vh]">
           <header className="w-full">
             <h1 className="text-3xl sm:text-4xl lg:text-7xl font-medium mb-4 lg:mb-7 text-center">
               Our featured
-              <span className="italic editorial-font"> Projects</span>
+              <span className="italic editorial-font hero-heading-span"> Projects</span>
             </h1>
 
             <p className="mx-auto text-center text-sm sm:text-base lg:text-xl text-[rgba(238,238,238,0.75)] max-w-[90%] sm:max-w-[80%] lg:max-w-[66%]">

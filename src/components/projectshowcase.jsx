@@ -29,11 +29,11 @@ export default function ProjectShowcase({
         ========================== */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           {/* Cover image */}
-          <figure className="glass-card-border rounded-lg overflow-hidden relative">
+          <figure className="glass-card-border rounded-lg overflow-hidden relative p-4 projects-cover-img">
             <img
               src={coverSrc}
               alt={`${title} cover`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-lg"
               loading="eager"
               decoding="async"
             />

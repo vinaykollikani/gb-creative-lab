@@ -44,7 +44,7 @@ export default function Navbar() {
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // Update hash in URL (so users can copy/share links)
+    // Update hash in URL
     window.history.replaceState(null, "", hash);
 
     closeMenu();
@@ -60,12 +60,26 @@ export default function Navbar() {
       } else {
         // Navigate to home
         navigate("/");
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 300);
       }
       closeMenu();
     } else if (path.startsWith("#")) {
       handleHashNav(path, e);
     } else {
-      // Regular page navigation
+      // Regular page navigation (e.g., /projects)
+      e.preventDefault();
+      if (location.pathname === path) {
+        // Already on that page → scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate(path);
+        // After navigation, scroll top
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 300);
+      }
       closeMenu();
     }
   };
@@ -80,8 +94,8 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="nav-bar page-container navbar glass-card-border">
-      <div className="nav-bar__container">
+    <nav className="nav-bar navbar">
+      <div className="nav-bar__container glass-card-border">
         <div className="nav-bar__content">
           {/* Logo */}
           <Link

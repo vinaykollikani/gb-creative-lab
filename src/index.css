@@ -21,7 +21,7 @@ html {
   background-color: var(--dark);
   color: white;
   overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* ------------------------------------------------------------------------
@@ -166,7 +166,8 @@ html {
 .about-divider-top,
 .about-divider-bottom,
 .footer-top-divider,
-.footer-bottom-divider {
+.footer-bottom-divider,
+.hero-heading-span {
   position: relative;
 }
 .about-divider-top::after,
@@ -186,7 +187,8 @@ html {
   background: url("../src/assets/Divider01.svg") no-repeat top;
 }
 .about-divider-bottom::before,
-.footer-bottom-divider::after {
+.footer-bottom-divider::after,
+.hero-heading-span::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -197,7 +199,11 @@ html {
   z-index: -1;
   transform: rotate(180deg);
 }
-
+.hero-heading-span::after {
+  background: url("../src/assets/Hero_heading.svg") no-repeat top;
+  left: 4px;
+  bottom: 8px;
+}
 /* ------------------------------------------------------------------------
    9) Fancy Demo Block (kept for parity)
 ------------------------------------------------------------------------- */
@@ -420,7 +426,7 @@ html {
   position: absolute;
   top: -2px;
   left: -2px;
-  transform: translateX(-50%);
+  transform: translateX(-60%);
   width: 115%;
   height: 115%;
   background: linear-gradient(
@@ -630,5 +636,46 @@ html {
 }
 
 /* Mobile nav state hooks (style as you like; default is simple toggle) */
-.nav-bar__mobile-panel.is-closed { display: none; }
-.nav-bar__mobile-panel.is-open { display: block; }
+.nav-bar__mobile-panel.is-closed {
+  display: none;
+}
+.nav-bar__mobile-panel.is-open {
+  display: block;
+}
+
+/* ------------------------------------------------------------------------
+   17) Project Page | Project Image Cover
+------------------------------------------------------------------------- */
+.projects-cover-img,
+.about-cover-img {
+  position: relative;
+}
+.projects-cover-img::after,
+.projects-cover-img::before,
+.about-cover-img::after,
+.about-cover-img::before {
+  content: "";
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  background: #0156fe;
+  background: radial-gradient(
+    circle,
+    rgba(1, 86, 254, 0.7) 0%,
+    rgba(1, 1, 1, 1) 80%
+  );
+}
+.projects-cover-img::after,
+.about-cover-img::after {
+  top: 0;
+  left: 0;
+  transform: translateX(-50%) translateY(-50%);
+}
+.projects-cover-img::before,
+.about-cover-img::before {
+  bottom: 0;
+  right: 0;
+  transform: translateX(50%) translateY(50%);
+}

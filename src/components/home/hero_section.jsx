@@ -24,7 +24,7 @@ export default function HeroSection() {
           {/* font-size changes only: phone → tablet → desktop */}
           <h1 className="mb-4 text-3xl sm:text-4xl lg:text-7xl w-full lg:w-[60%]">
             Lorem ipsum dolor sit amet
-            <span className="italic editorial-font"> consectetur</span>
+            <span className="italic editorial-font hero-heading-span"> consectetur</span>
           </h1>
 
           <p className="mb-5 text-base sm:text-lg lg:text-xl">

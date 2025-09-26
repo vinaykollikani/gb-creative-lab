@@ -1,14 +1,14 @@
 /* ===========================================
    MAIN NAVIGATION CONTAINER
    =========================================== */
-nav {
+.navbar {
   width: 100%;
   max-width: 100dvw;
   height: auto;
   position: sticky;
-  top: 0px;
-  z-index: 999;
-  margin-top: 48px;
+  top: 0;
+  z-index: 9999; /* keep navbar always on top */
+  margin-top: 0; /* removed to fix sticky */
 }
 
 .nav-bar {
@@ -26,6 +26,8 @@ nav {
   align-items: center;
   padding: 24px 12px;
   height: 66px;
+  position: relative;
+  z-index: 9999;
 }
 
 /* Main navigation content wrapper */
@@ -62,21 +64,19 @@ nav {
   padding-inline: 16px;
   cursor: pointer;
 }
- 
 
 /* ===========================================
      MOBILE MENU BUTTON (HAMBURGER)
      =========================================== */
 .nav-bar_menu_button {
   position: relative;
-  width: 4rem;
-  height: 2.8rem;
+  width: 2.4rem;
+  height: 2rem;
   font-size: 1.8rem;
   transition: all 0.3s ease;
   cursor: pointer;
   margin: 6px;
-  display: none;
-  /* Hidden by default, shown on mobile */
+  display: none; /* Hidden by default, shown on mobile */
 }
 
 /* Hamburger menu lines */
@@ -92,7 +92,7 @@ nav {
 
 /* Top hamburger line */
 .hamburger-line:nth-child(1) {
-  top: 0.125em;
+  top: 0.225em;
 }
 
 /* Top line animation when menu is active */
@@ -103,7 +103,7 @@ nav {
 
 /* Middle hamburger line */
 .hamburger-line:nth-child(2) {
-  top: 40%;
+  top: 50%;
   width: 90%;
 }
 
@@ -116,7 +116,7 @@ nav {
 
 /* Bottom hamburger line */
 .hamburger-line:nth-child(3) {
-  top: 70%;
+  top: 80%;
   width: 40%;
 }
 
@@ -133,20 +133,21 @@ nav {
 
 /* Mobile Nav Menu - hidden off top */
 .nav-menu_mobile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: fixed; /* cover full screen */
+  top: -4px;
+  left: -4px;
+  width: 102%;
   max-height: 100vh;
-  z-index: -1;
-  padding: 108px 48px 24px;
+  z-index: -1; /* just under navbar */
+  padding: 72px 48px 24px;
   display: flex;
   flex-direction: column;
   text-align: center;
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
-  transition: transform 1s ease, opacity 0.4s ease, z-index 0s 0.3s;
+  transition: transform 1s ease, opacity 0.4s ease;
+  background-color: #0c0c0c; /* solid bg */
 }
 
 /* When active */
@@ -154,8 +155,6 @@ nav {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
-  transition: transform 1s ease, opacity 0.4s ease, z-index 0s 0s;
-  background-color: #121212;
 }
 
 /* Animate each li */
@@ -163,7 +162,7 @@ nav {
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  background-color: #121212;
+  background-color: transparent;
   padding: 8px;
 }
 
@@ -225,6 +224,10 @@ nav {
 
 /* Mobile breakpoint */
 @media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+  }
   .navbar--transparent {
     background-color: rgba(20, 20, 20, 0.95);
   }

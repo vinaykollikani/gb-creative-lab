@@ -48,7 +48,7 @@ export default function About() {
           </div>
 
           {/* Image */}
-          <figure className="about-section-image max-w-[420px] w-full p-4 glass-card-border rounded-[16px]">
+          <figure className="about-section-image max-w-[420px] w-full p-4 glass-card-border rounded-[16px] about-cover-img overflow-hidden">
             <img
               src="https://picsum.photos/420/300"
               alt="Studio preview"
