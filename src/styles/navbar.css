@@ -8,7 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 9999; /* keep navbar always on top */
-  margin-top: 0; /* removed to fix sticky */
+  margin-top: 50px; /* removed to fix sticky */
 }
 
 .nav-bar {

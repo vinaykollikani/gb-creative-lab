@@ -31,7 +31,7 @@ export default function About() {
           {/* Text content */}
           <div className="about-section_content w-full lg:w-1/2">
             <p className="mb-3 text-lg sm:text-xl opacity-50">
-              About Us – <span className="italic">GB Creative Lab</span>
+              About Us – <span className="italic editorial-font">GB Creative Lab</span>
             </p>
             <h2
               id="about-heading"

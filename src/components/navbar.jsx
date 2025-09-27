@@ -95,7 +95,7 @@ export default function Navbar() {
 
   return (
     <nav className="nav-bar navbar">
-      <div className="nav-bar__container glass-card-border">
+      <div className="nav-bar__container glass-card-border page-container">
         <div className="nav-bar__content">
           {/* Logo */}
           <Link
