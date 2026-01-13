@@ -1,18 +1,50 @@
 /**
- * File: src/components/projectssection.jsx
- * Role: Projects grid (3 breakpoints: phone, tablet, desktop)
+ * File: src/components/ProjectsSection.jsx
+ * Role: Responsive projects grid (mobile, tablet, desktop)
  */
-import React from 'react'
-import bluedot from './../../assets/Blue_dot.svg'
-import arrowType1 from './../../assets/Arrow.svg'
-import projectImage1 from './../../assets/Rectangle3.jpg'
+import React from "react";
+// ✅ 1. Import 'Link' from react-router-dom
+import { Link } from "react-router-dom";
+import bluedot from "./../../assets/SVGs/Blue_dot.svg";
+import arrowType1 from "./../../assets/SVGs/Arrow.svg";
 
-const CARDS = Array.from({ length: 4 }, (_, i) => ({
-  id: i + 1,
-  name: 'Project Name',
-  type: 'Project Type1',
-  img: projectImage1,
-}))
+// Project cover images
+import projectImage1 from "./../../assets/ESORA/EsoraCover.webp";
+import projectImage2 from "./../../assets/RegulateSugar/RegulateCover.webp";
+import projectImage3 from "./../../assets/Baklava/BaklavaCover.webp";
+import projectImage4 from "./../../assets/Viva/VivaCover.webp";
+
+// Project data
+const CARDS = [
+  {
+    id: 1,
+    name: "Esora",
+    type: "Logo & Packaging Design",
+    img: projectImage1,
+    link: "/projects#esora",
+  },
+  {
+    id: 2,
+    name: "Regulate Sugar",
+    type: "Packaging Design",
+    img: projectImage2,
+    link: "/projects#regulate",
+  },
+  {
+    id: 3,
+    name: "Baklava",
+    type: "Branding",
+    img: projectImage3,
+    link: "/projects#baklava",
+  },
+  {
+    id: 4,
+    name: "Viva Ethnics",
+    type: "Logo Design",
+    img: projectImage4,
+    link: "/projects#viva",
+  },
+];
 
 export default function ProjectsSection() {
   return (
@@ -22,9 +54,9 @@ export default function ProjectsSection() {
       aria-labelledby="projects-heading"
     >
       <div className="wrapper">
-        {/* Section header */}
+        {/* Section Header */}
         <div className="projects-section_content flex flex-col items-center gap-3 text-center">
-          {/* Tag */}
+          {/* ... Tag ... */}
           <div className="projects-tag relative h-10 w-full sm:w-1/2 lg:w-1/3 flex items-center justify-center">
             <div className="divider" aria-hidden="true"></div>
             <div className="absolute h-8 rounded-4xl">
@@ -38,24 +70,27 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          {/* Heading */}
+          {/* ... Heading ... */}
           <h2
             id="projects-heading"
             className="text-3xl sm:text-4xl lg:text-[64px] lg:leading-[1.1]"
           >
-            Our Featured <span className="italic hero-heading-span editorial-font">Projects</span>
+            Our Featured{" "}
+            <span className="italic hero-heading-span editorial-font">
+              Projects
+            </span>
           </h2>
 
-          {/* Description */}
+          {/* ... Description ... */}
           <p className="text-base sm:text-lg lg:text-xl w-full sm:w-3/4 lg:w-1/2 opacity-60">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            quisquam deleniti vitae.
+            A closer look at brands we’ve helped <br />
+            shape, design, and bring to life.
           </p>
 
-          {/* CTA */}
-          <a
+          {/* ✅ 2. Changed <a> to <Link> and 'href' to 'to' */}
+          <Link
+            to="/projects"
             className="all-projects_cta flex justify-center items-center gap-2 mt-4 w-[180px] px-2 h-[40px] sm:w-[200px] sm:h-[42px] border-2 rounded-4xl"
-            href="/projects"
             aria-label="See all projects"
           >
             <p className="text-base sm:text-lg lg:text-xl">
@@ -67,10 +102,10 @@ export default function ProjectsSection() {
               className="h-4 p-0.5"
               aria-hidden="true"
             />
-          </a>
+          </Link>
         </div>
 
-        {/* Cards grid */}
+        {/* Cards Grid */}
         <div className="projects-list-container grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2">
           {CARDS.map((c) => (
             <article
@@ -80,14 +115,18 @@ export default function ProjectsSection() {
               {/* Image */}
               <img
                 src={c.img}
-                alt="Project Thumbnail"
-                className="w-full rounded-lg object-cover grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
+                alt={`${c.name} Project Thumbnail`}
+                className="w-full h-[360px] rounded-lg object-cover grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
                 loading="lazy"
                 decoding="async"
               />
 
-              {/* Info bar */}
-              <div className="project-info glass-card-border absolute w-4/5 h-[44px] left-1/2 -translate-x-1/2 bottom-6 p-3 flex justify-between items-center transition-colors duration-300 ease-in-out">
+              {/* ✅ 3. Changed <a> to <Link> and 'href' to 'to' */}
+              <Link
+                to={c.link}
+                className="project-info glass-card-border absolute w-4/5 h-[44px] left-1/2 -translate-x-1/2 bottom-6 p-3 flex justify-between items-center transition-all duration-300 ease-in-out hover:bg-white/10 "
+                aria-label={`View ${c.name} project`}
+              >
                 <div className="project-info__text flex items-baseline gap-4">
                   <div className="project-name text-sm sm:text-base lg:text-xl italic editorial-font font-extralight tracking-wide">
                     {c.name}
@@ -115,11 +154,11 @@ export default function ProjectsSection() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

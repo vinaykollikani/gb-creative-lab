@@ -1,12 +1,33 @@
-/**
- * File: src/components/processsection.jsx
- * Role: Process steps (cards) — phone+tablet same layout; desktop split
- */
-import React from 'react'
-import bluedot from './../../assets/Blue_dot.svg'
-import ServicesIcon1 from './../../assets/ServicesIcon1.svg'
+import React from "react";
+import bluedot from "./../../assets/SVGs/Blue_dot.svg";
+import ServicesIcon1 from "./../../assets/SVGs/ServicesIcon1.svg";
+import ServicesIcon2 from "./../../assets/SVGs/ServicesIcon1.svg";
+import ServicesIcon3 from "./../../assets/SVGs/ServicesIcon1.svg";
+import ProcessCover from "./../../assets/ProcessCover.webp";
 
-const STEPS = [1, 2, 3]
+const STEPS = [
+  {
+    id: 1,
+    title: "Discovery & Research",
+    description:
+      "We uncover brand insights and goals to set a clear creative direction from the start.",
+    icon: ServicesIcon1,
+  },
+  {
+    id: 2,
+    title: "Design & Develop",
+    description:
+      "Translating strategy into creative solutions through collaborative concept development and design refinement.",
+    icon: ServicesIcon2,
+  },
+  {
+    id: 3,
+    title: "Deliver & Launch",
+    description:
+      "Final production, file preparation, and launch support, ensuring brand consistency across every platform.",
+    icon: ServicesIcon3,
+  },
+];
 
 export default function ProcessSection() {
   return (
@@ -14,7 +35,7 @@ export default function ProcessSection() {
       className="wrapper process-section flex flex-col gap-8 mt-12 lg:flex-row"
       aria-labelledby="process-heading"
     >
-      {/* Left: content (stacks on phone/tablet, 1/2 on desktop) */}
+      {/* Left: content */}
       <div className="process-section-content w-full lg:w-1/2">
         {/* Tag */}
         <div className="relative rounded-4xl w-fit h-fit mb-3">
@@ -26,11 +47,15 @@ export default function ProcessSection() {
         </div>
 
         {/* Heading + intro */}
-        <h2 id="process-heading" className="mb-2 text-3xl sm:text-4xl lg:text-[64px]">
-          Process
+        <h2
+          id="process-heading"
+          className="mb-2 text-3xl sm:text-4xl lg:text-[48px]"
+        >
+          How We <span className="italic editorial-font">Create</span>
         </h2>
-        <p className="text-base sm:text-lg lg:text-xl opacity-75">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia sunt maxime sequi.
+        <p className="text-base sm:text-[14px] lg:text-[16px] opacity-75 w-2/3">
+          We don’t just create; we guide you through a seamless creative
+          journey.
         </p>
 
         {/* CTA */}
@@ -41,20 +66,20 @@ export default function ProcessSection() {
 
         {/* Steps */}
         <ol className="process-steps flex flex-col gap-3 mt-6">
-          {STEPS.map((n) => (
-            <li key={n} className="reusable-card">
+          {STEPS.map((step) => (
+            <li key={step.id} className="reusable-card blur-effect">
               {/* Card header */}
               <div className="card-header flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <img src={ServicesIcon1} alt="Service Icon" />
-                  <h3 className="card-title text-xl sm:text-2xl lg:text-[32px]">
-                    Process
+                  <img src={step.icon} alt={`${step.title} Icon`} />
+                  <h3 className="card-title text-xl sm:text-2xl lg:text-[28px]">
+                    {step.title}
                   </h3>
                 </div>
 
                 {/* Step number */}
                 <span className="card-step relative w-8 sm:w-9 lg:w-10 aspect-square flex items-center justify-center rounded-full">
-                  {n}
+                  {step.id}
                 </span>
               </div>
 
@@ -63,16 +88,22 @@ export default function ProcessSection() {
 
               {/* Description */}
               <p className="card-description text-sm sm:text-base lg:text-[14px] opacity-50">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit totam repellendus quia,
-                quibusdam tempore eum consectetur itaque quidem saepe.
+                {step.description}
               </p>
             </li>
           ))}
         </ol>
       </div>
 
-      {/* Right: media (kept empty as in your original; appears on desktop) */}
-      <div className="process-section-media w-full lg:w-1/2" aria-hidden="true"></div>
+      {/* Right: media section */}
+      <figure className="process-section-media w-full lg:w-1/2">
+        <img
+          src={ProcessCover}
+          alt=""
+          srcset=""
+          className="w-full h-full object-cover glass-card-border blur-effect"
+        />
+      </figure>
     </section>
-  )
+  );
 }

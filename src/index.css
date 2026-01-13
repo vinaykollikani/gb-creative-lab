@@ -24,6 +24,9 @@ html {
   font-family: "Inter", sans-serif;
 }
 
+/* * {
+  border: 0.5px solid red;
+} */
 /* ------------------------------------------------------------------------
    3) Custom Fonts
    (Loaded locally; keep names as referenced in components)
@@ -35,6 +38,7 @@ html {
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
   font-family: "EditorialNew";
   src: url("./assets/editorial-new/PPEditorialNew-UltralightItalic-BF644b214ff1e9b.otf")
@@ -42,15 +46,18 @@ html {
   font-weight: 200;
   font-display: swap;
 }
+
 .editorial-font {
   font-family: "EditorialNew", sans-serif;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("./assets/Inter/Inter_24pt-Regular.ttf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("./assets/Inter/Inter_24pt-ExtraLight.ttf") format("opentype");
@@ -82,10 +89,20 @@ html {
 
   /* Glass Effect Vars */
   --glass-bg: #0c0c0c1a;
-  --glass-brd: #ffffff26;
+  --glass-brd: #ffffff26; 
   --glass-shadow: rgba(0, 0, 0, 0.1);
   --glass-radius: 12px;
   --glass-blur: 2px;
+  /* Increased opacity from 0c0c0c1a (dark/thin) to ffffff4d (bright/thick) */
+  /* If you want it even brighter, use #ffffff66 (40% white) */
+  /* --glass-bg: rgba(255, 255, 255, 0.25);  */
+  
+  --glass-brd: rgba(255, 255, 255, 0.4);
+  --glass-shadow: rgba(0, 0, 0, 0.15);
+  --glass-radius: 12px;
+  
+  /* Increased blur slightly to help the brightness feel "frosted" */
+  --glass-blur: 8px;
 }
 
 /* ------------------------------------------------------------------------
@@ -95,12 +112,14 @@ html {
   max-width: 1440px;
   margin-inline: auto;
 }
+
 .wrapper {
   max-width: 1080px;
   margin-inline: auto;
   padding: var(--padding-type1);
   font-family: "Inter", sans-serif;
 }
+
 .home-hero_section {
   min-height: calc(100dvh - 116px);
 }
@@ -124,11 +143,15 @@ html {
 /* Base glass card */
 .glass-card-border {
   background: var(--glass-bg);
-  border: 2px solid var(--glass-brd);
+  border: 1px solid var(--glass-brd);
   border-radius: var(--glass-radius);
-  box-shadow: 0 10px 10px var(--glass-shadow);
   backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur)); /* Safari */
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.nav-bar__container.glass-card-border {
+  background: hsla(0, 0%, 5%, 0.9);
+  
 }
 .glass-card-border.contact-form-bg {
   background: hsla(0, 0%, 93%, 0.03);
@@ -140,9 +163,10 @@ html {
   z-index: 1;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 1px 1px 1px #ffffff4d, -1px -1px 1px #ffffff4d;
+  box-shadow: 1px 1px 1px #ffffff33, -1px -1px 1px #ffffff33;
   transition: 0.3s all ease;
 }
+
 .glass-effect.hover-effect:hover {
   background: rgba(1, 85, 254, 0.2);
 }
@@ -163,6 +187,7 @@ html {
     transparent
   );
 }
+
 .about-divider-top,
 .about-divider-bottom,
 .footer-top-divider,
@@ -170,22 +195,25 @@ html {
 .hero-heading-span {
   position: relative;
 }
+
 .about-divider-top::after,
 .footer-top-divider::after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 360px;
+  height: 100px;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: url("../src/assets/Divider.svg") no-repeat top;
+  background: url("../src/assets/SVGs/Divider.svg") no-repeat top;
   background-size: auto;
   z-index: -1;
 }
+
 .footer-top-divider::after {
-  background: url("../src/assets/Divider01.svg") no-repeat top;
+  background: url("../src/assets/SVGs/Divider01.svg") no-repeat top;
 }
+
 .about-divider-bottom::before,
 .footer-bottom-divider::after,
 .hero-heading-span::after {
@@ -194,16 +222,18 @@ html {
   width: 100%;
   height: 100px;
   bottom: 0;
-  background: url("../src/assets/Divider.svg") no-repeat top;
+  background: url("../src/assets/SVGs/Divider.svg") no-repeat top;
   background-size: auto;
   z-index: -1;
   transform: rotate(180deg);
 }
+
 .hero-heading-span::after {
-  background: url("../src/assets/Hero_heading.svg") no-repeat top;
+  background: url("../src/assets/SVGs/Hero_heading.svg") no-repeat top;
   left: 4px;
   bottom: 8px;
 }
+
 /* ------------------------------------------------------------------------
    9) Fancy Demo Block (kept for parity)
 ------------------------------------------------------------------------- */
@@ -244,6 +274,7 @@ html {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
 /* bottom-left */
 .glass-btn::before {
   bottom: 0;
@@ -256,6 +287,7 @@ html {
     rgba(12, 12, 12, 1) 50%
   );
 }
+
 /* top-right */
 .glass-btn::after {
   top: 0;
@@ -276,6 +308,7 @@ html {
   pointer-events: none;
   overflow: hidden;
 }
+
 .glass-hover::before,
 .glass-hover::after {
   content: "";
@@ -285,6 +318,7 @@ html {
   transition: all 0.6s ease;
   z-index: -1;
 }
+
 /* bottom-left blue */
 .glass-hover::before {
   bottom: 0;
@@ -293,6 +327,7 @@ html {
   height: 10%;
   background: linear-gradient(8deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
 }
+
 /* top-right blue */
 .glass-hover::after {
   top: 0;
@@ -305,14 +340,18 @@ html {
 /* Hover state transitions */
 .glass-btn:hover::before,
 .glass-btn:hover::after {
-  opacity: 0; /* hide white ones */
+  opacity: 0;
+  /* hide white ones */
 }
+
 .glass-btn:hover .glass-hover::before {
   background: linear-gradient(7.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
 }
+
 .glass-btn:hover .glass-hover::after {
   background: linear-gradient(187.5deg, #0156fe 0%, rgba(12, 12, 12, 1) 50%);
 }
+
 .glass-btn:hover .glass-hover::before,
 .glass-btn:hover .glass-hover::after {
   opacity: 0.75;
@@ -335,6 +374,7 @@ html {
   box-shadow: 0 10px 10px var(--glass-shadow);
   transition: color 0.3s ease;
 }
+
 /* white smoky highlights */
 .glass-btn-rounded::before,
 .glass-btn-rounded::after {
@@ -344,6 +384,7 @@ html {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
 .glass-btn-rounded::before {
   bottom: 0;
   left: 0;
@@ -355,6 +396,7 @@ html {
     rgba(12, 12, 12, 1) 50%
   );
 }
+
 .glass-btn-rounded::after {
   top: 0;
   right: 0;
@@ -366,6 +408,7 @@ html {
     rgba(12, 12, 12, 1) 50%
   );
 }
+
 /* black radial caps on the badge */
 .glass-btn-rounded-ba {
   position: absolute;
@@ -375,6 +418,7 @@ html {
   overflow: hidden;
   z-index: 10;
 }
+
 .glass-btn-rounded-ba::before,
 .glass-btn-rounded-ba::after {
   content: "";
@@ -387,11 +431,13 @@ html {
   height: 100%;
   background: radial-gradient(circle, #0e0e0e 0%, #0c0c0c00 100%);
 }
+
 /* top-left gradient */
 .glass-btn-rounded-ba::before {
   left: 0;
   transform: translate(-50%, -50%);
 }
+
 /* top-right gradient */
 .glass-btn-rounded-ba::after {
   right: 0;
@@ -409,6 +455,7 @@ html {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
 }
+
 .all-projects_cta p,
 .all-projects_cta img {
   position: relative;
@@ -420,6 +467,7 @@ html {
   transition: 0.3s ease all;
   scale: 1;
 }
+
 /* Gradient overlay */
 .all-projects_cta::after {
   content: "";
@@ -441,9 +489,11 @@ html {
   transform: translateX(0);
   pointer-events: none;
 }
+
 .all-projects_cta:hover::after {
   transform: translateX(100%);
 }
+
 .all-projects_cta:hover img {
   transform: rotate(45deg);
 }
@@ -457,9 +507,11 @@ html {
   backdrop-filter: blur(8px);
   border-radius: 0.5rem;
 }
+
 .project-info:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
 /* Arrow */
 .arrow-container {
   position: relative;
@@ -467,11 +519,13 @@ html {
   rotate: -30deg;
   overflow: hidden;
 }
+
 .arrow-track {
   position: absolute;
   left: -27px;
   transition: left 0.4s ease-in-out;
 }
+
 .project-info:hover .arrow-track,
 .arrow-container:hover .arrow-track {
   left: -1px;
@@ -482,6 +536,7 @@ html {
   transition: filter 0.4s ease-in-out;
   filter: grayscale(100%);
 }
+
 /* NOTE: The sibling selector combo below was commented as "not valid" in your file.
    Leaving it commented to preserve intent without risking CSS errors.
    .project-info:hover ~ img { ... }
@@ -498,6 +553,7 @@ html {
   position: relative;
   overflow: hidden;
 }
+
 .services-list_items::before,
 .services-list_items::after {
   content: "";
@@ -506,6 +562,7 @@ html {
   transition: all 0.6s ease;
   z-index: -1;
 }
+
 /* bottom-left blue */
 .services-list_items::before {
   bottom: 0;
@@ -514,6 +571,7 @@ html {
   height: 5%;
   background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
 }
+
 /* top-right blue */
 .services-list_items::after {
   top: 0;
@@ -539,6 +597,7 @@ html {
   transition: all 0.4s ease;
   cursor: pointer;
 }
+
 /* gradient highlights (hidden by default) */
 .reusable-card::before,
 .reusable-card::after {
@@ -547,22 +606,33 @@ html {
   opacity: 0;
   transition: all 0.5s ease;
   z-index: -1;
+  width: 50%;
+  height: 20%;
 }
+
 /* bottom-left highlight */
 .reusable-card::before {
   bottom: 0;
   left: 0;
-  width: 80%;
-  height: 5%;
-  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
+  background: linear-gradient(6deg, #0156fe 0%, #0155fe00 50%);
 }
+
 /* top-right highlight */
 .reusable-card::after {
   top: 0;
   right: 0;
-  width: 80%;
-  height: 5%;
-  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
+  background: linear-gradient(186deg, #0156fe 0%, #0155fe00 50%);
+}
+
+.why-choose .reusable-card::before {
+  width: 60%;
+  height: 12%;
+  background: linear-gradient(9deg, #0156fe 0%, #0155fe00 50%);
+}
+.why-choose .reusable-card::after {
+  width: 60%;
+  height: 12%;
+  background: linear-gradient(189deg, #0156fe 0%, #0155fe00 50%);
 }
 /* Divider inside card */
 .card-divider {
@@ -578,17 +648,20 @@ html {
   );
   transition: background 0.3s ease;
 }
+
 /* Hover effects */
 .reusable-card:hover::before,
 .reusable-card:hover::after {
   opacity: 1;
 }
+
 .reusable-card:hover .card-divider {
   background: linear-gradient(to right, transparent, #0156fe, transparent);
 }
-.reusable-card:hover .card-step {
-  background: #0155fe14;
-}
+
+  .reusable-card:hover .card-step {
+    background: #0155fe14;
+  }
 
 /* Number circle */
 .card-step {
@@ -609,16 +682,40 @@ html {
 .contact-blue {
   position: relative;
 }
+
 .contact-blue::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 360px;
   top: 0;
-  background: url("../assets/ContactSection.png") no-repeat top;
+  background: url("./assets/ContactSection.png") no-repeat top;
   background-size: auto;
   z-index: -1;
 }
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .contact-blue::after {
+    height: 280px;
+    background-size: contain;
+  }
+}
+
+/* Large mobiles */
+@media (max-width: 768px) {
+  .contact-blue::after {
+    height: 220px;
+  }
+}
+
+/* Small mobiles */
+@media (max-width: 480px) {
+  .contact-blue::after {
+    height: 180px;
+  }
+}
+
 
 /* ------------------------------------------------------------------------
    16) Accessibility & Helpers (non-visual)
@@ -639,17 +736,19 @@ html {
 .nav-bar__mobile-panel.is-closed {
   display: none;
 }
+
 .nav-bar__mobile-panel.is-open {
   display: block;
 }
 
 /* ------------------------------------------------------------------------
-   17) Project Page | Project Image Cover
+   17) Project Page | Project Image Cover 
 ------------------------------------------------------------------------- */
 .projects-cover-img,
 .about-cover-img {
   position: relative;
 }
+
 .projects-cover-img::after,
 .projects-cover-img::before,
 .about-cover-img::after,
@@ -667,15 +766,41 @@ html {
     rgba(1, 1, 1, 1) 80%
   );
 }
+
 .projects-cover-img::after,
 .about-cover-img::after {
   top: 0;
   left: 0;
   transform: translateX(-50%) translateY(-50%);
 }
+
 .projects-cover-img::before,
 .about-cover-img::before {
   bottom: 0;
   right: 0;
   transform: translateX(50%) translateY(50%);
+}
+
+/* ------------------------------------------------------------------------
+   18) About Page | Image Cover 
+------------------------------------------------------------------------- */
+.about-cover-img:first-child {
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+
+.about-cover-img:last-child {
+  bottom: 60px;
+  left: 165px;
+}
+
+.about-cover-img > img {
+  filter: grayscale(1);
+  transition: 0.3s ease all;
+}
+
+.about-cover-img > img:hover {
+  filter: grayscale(0);
+  transform: scale(1.01);
 }

@@ -2,12 +2,12 @@
  * File: src/components/contactsection.jsx
  * Role: Contact info + form (responsive: phone+tablet stack, desktop split)
  */
-import React from 'react'
-import bluedot from './../../assets/Blue_dot.svg'
-import MailSVG from './../../assets/MailSVG.svg'
-import CallSVG from './../../assets/CallSVG.svg'
-import LocationSVG from './../../assets/LocationSVG.svg'
-import ArrowSVG from './../../assets/Arrow.svg'
+import React from "react";
+import bluedot from "./../../assets/SVGs/Blue_dot.svg";
+import MailSVG from "./../../assets/SVGs/MailSVG.svg";
+import CallSVG from "./../../assets/SVGs/CallSVG.svg";
+import LocationSVG from "./../../assets/SVGs/LocationSVG.svg";
+import ArrowSVG from "./../../assets/SVGs/Arrow.svg";
 
 export default function ContactSection() {
   return (
@@ -28,7 +28,9 @@ export default function ContactSection() {
                 <span className="glass-btn-rounded-ba"></span>
                 <span className="px-2 py-1 w-fit flex gap-2 items-center justify-center rounded-4xl glass-btn-rounded">
                   <img src={bluedot} alt="" aria-hidden="true" />
-                  <span className="font-light text-sm sm:text-base">Contact</span>
+                  <span className="font-light text-sm sm:text-base">
+                    Contact
+                  </span>
                 </span>
               </div>
 
@@ -36,11 +38,12 @@ export default function ContactSection() {
                 id="contact-heading"
                 className="mb-3 text-3xl sm:text-4xl lg:text-5xl"
               >
-                Get In Touch
+                Let's Create{" "}
+                <span className="italic editorial-font">Together</span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl opacity-75">
-                Lorem ipsum dolor sit amet consectetur. Egestas quis faucibus
-                lorem commodo mauris.
+                Tell us about your project; we’ll turn ideas into a brand that
+                connects and converts.
               </p>
             </div>
 
@@ -50,21 +53,31 @@ export default function ContactSection() {
               <li className="w-full h-[72px] flex items-center justify-between rounded-xl px-4 py-1 text-white glass-card-border contact-form-bg">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 p-2 rounded-lg glass-effect flex items-center justify-center">
-                    <img src={MailSVG} alt="" className="w-full" aria-hidden="true" />
+                    <img
+                      src={MailSVG}
+                      alt=""
+                      className="w-full"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div className="flex flex-col leading-tight">
                     <span className="text-base sm:text-lg">Email Us</span>
                     <span className="text-sm text-gray-400 -mt-1">
-                      sanmukhsai7@gmail.com
+                      hello@gbcreativelab.com
                     </span>
                   </div>
                 </div>
                 <a
-                  href="mailto:sanmukhsai7@gmail.com"
+                  href="mailto:hello@gbcreativelab.com"
                   className="flex items-center justify-center w-9 h-9 p-2.5 glass-effect rounded-full cursor-pointer hover-effect"
                   aria-label="Send email"
                 >
-                  <img src={ArrowSVG} alt="" className="w-5" aria-hidden="true" />
+                  <img
+                    src={ArrowSVG}
+                    alt=""
+                    className="w-5"
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
 
@@ -72,12 +85,17 @@ export default function ContactSection() {
               <li className="w-full h-[72px] flex items-center justify-between rounded-xl px-4 py-1 text-white shadow-lg glass-card-border contact-form-bg">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 p-2 rounded-lg glass-effect flex items-center justify-center">
-                    <img src={CallSVG} alt="" className="w-full" aria-hidden="true" />
+                    <img
+                      src={CallSVG}
+                      alt=""
+                      className="w-full"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div className="flex flex-col leading-tight">
                     <span className="text-base sm:text-lg">Call Us</span>
                     <span className="text-sm text-gray-400 -mt-1">
-                      +91 98765 43210
+                      +353 XXX XXX XXX
                     </span>
                   </div>
                 </div>
@@ -86,7 +104,12 @@ export default function ContactSection() {
                   className="flex items-center justify-center w-9 h-9 p-2.5 glass-effect rounded-full cursor-pointer hover-effect"
                   aria-label="Call us"
                 >
-                  <img src={ArrowSVG} alt="" className="w-5" aria-hidden="true" />
+                  <img
+                    src={ArrowSVG}
+                    alt=""
+                    className="w-5"
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
 
@@ -104,7 +127,7 @@ export default function ContactSection() {
                   <div className="flex flex-col leading-tight">
                     <span className="text-base sm:text-lg">Visit Us</span>
                     <span className="text-sm text-gray-400 -mt-1">
-                      Bhubaneswar, Odisha, India
+                      Dublin, Ireland | Cologne, Germany
                     </span>
                   </div>
                 </div>
@@ -115,7 +138,12 @@ export default function ContactSection() {
                   className="flex items-center justify-center w-9 h-9 p-2.5 glass-effect rounded-full cursor-pointer hover-effect"
                   aria-label="View location on map"
                 >
-                  <img src={ArrowSVG} alt="" className="w-5" aria-hidden="true" />
+                  <img
+                    src={ArrowSVG}
+                    alt=""
+                    className="w-5"
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
             </ul>
@@ -183,5 +211,5 @@ export default function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

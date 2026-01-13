@@ -387,55 +387,6 @@
   background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
 }
 
-/* ===============================
-   Reusable Glass Card
-   (Used in Services, Features, etc.)
-=================================*/
-.reusable-card {
-  position: relative;
-  overflow: hidden;
-  padding: 24px 32px;
-
-  /* glassmorphism base */
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-brd);
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 10px var(--glass-shadow);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-/* Gradient highlights (hidden by default) */
-.reusable-card::before,
-.reusable-card::after {
-  content: "";
-  position: absolute;
-  opacity: 0;
-  transition: all 0.5s ease;
-  z-index: -1;
-}
-
-/* bottom-left highlight */
-.reusable-card::before {
-  bottom: 0;
-  left: 0;
-  width: 80%;
-  height: 5%;
-  background: linear-gradient(1deg, #0156fe 0%, rgba(12, 12, 12, 1) 60%);
-}
-
-/* top-right highlight */
-.reusable-card::after {
-  top: 0;
-  right: 0;
-  width: 80%;
-  height: 5%;
-  background: linear-gradient(181deg, #0156fe 0%, rgba(12, 12, 12, 1) 59%);
-}
-
 /* Divider inside card */
 .card-divider {
   width: min(80%, 100rem);
@@ -453,22 +404,6 @@
 }
 
 /* ===============================
-   Hover Effects
-=================================*/
-.reusable-card:hover::before,
-.reusable-card:hover::after {
-  opacity: 1; /* show gradients */
-}
-
-.reusable-card:hover .card-divider {
-  background: linear-gradient(to right, transparent, #0156fe, transparent);
-}
-
-.reusable-card:hover .card-step {
-  background: #0155fe14;
-}
-
-/* ===============================
    Number Circle with Animated Border
 =================================*/
 .card-step {
@@ -482,8 +417,6 @@
   box-shadow: 1px 1px 1px #ffffff4d, -1px -1px 1px #ffffff4d;
   transition: 0.3s all ease;
 }
-
-
 
 /* ===============================
   Contact Page Blue Line
@@ -502,5 +435,8 @@
   background-size: auto;
   z-index: -1;
 }
-
-
+/* 
+.blur-effect {
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 1px 1px 0px #ffffff, -1px -1px 0px #ffffff;
+} */

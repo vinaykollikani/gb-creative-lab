@@ -1,19 +1,21 @@
 /**
  * Reusable project section:
- *  - Hero row: image (left) + description card (right)
- *  - Gallery row: N images (configurable)
+ * - Hero row: image (left) + description card (right)
+ * - Gallery row: N images (configurable)
  *
  * Props:
- *  - title: string
- *  - type: string
- *  - summary: string
- *  - coverSrc: string (hero image)
- *  - gallery: string[] (image urls)
- *  - className: string (optional container overrides)
+ * - title: string
+ * - type: string
+ * - summary: string (supports <br /> for line breaks)
+ * - coverSrc: string (hero image)
+ * - gallery: string[] (image urls)
+ * - className: string (optional container overrides)
  */
+
 import React from "react";
 
 export default function ProjectShowcase({
+  id = "Project Id",
   title = "Project name",
   type = "Packaging",
   summary = "The project summary : Packaging",
@@ -22,14 +24,16 @@ export default function ProjectShowcase({
   className = "",
 }) {
   return (
-    <section className={`page-container ${className}`}>
-      <div className="wrapper">
+    // ✅ 1. Moved the 'id' prop to the root <section> element
+    <section className={`page-container ${className} scroll-mt-20 mb-8`} id={id}>
+      <div className="wrapper ">
         {/* =========================
             Row 1: Cover + Description
         ========================== */}
+        {/* ✅ 2. Removed the 'id' prop from this inner div */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           {/* Cover image */}
-          <figure className="glass-card-border rounded-lg overflow-hidden relative p-4 projects-cover-img">
+          <figure className="glass-card-border rounded-lg overflow-hidden relative p-3 projects-cover-img">
             <img
               src={coverSrc}
               alt={`${title} cover`}
@@ -43,26 +47,31 @@ export default function ProjectShowcase({
           <article className="glass-card-border rounded-lg p-4 md:p-6">
             <div className="space-y-4">
               <div className="opacity-60 text-sm">Project name</div>
-              <h2 className="text-[32px] md:text-[40px] editorial-font font-semibold leading-8">
+              <h2 className="text-[32px] md:text-[40px] editorial-font font-semibold leading-8 tracking-wide">
                 {title}
               </h2>
 
               <div>
                 <div className="opacity-60 text-sm">Project Type</div>
-                <div className="italic editorial-font text-xl">{type}</div>
+                <div className="italic editorial-font text-xl tracking-wider">
+                  {type}
+                </div>
               </div>
 
               <div className="space-y-1">
                 <div className="opacity-60 text-sm">The project summary :</div>
-                <p className="opacity-80 text-sm md:text-base">{summary}</p>
+                <p
+                  className="opacity-80 text-sm md:text-[12px]"
+                  dangerouslySetInnerHTML={{ __html: summary }}
+                ></p>
               </div>
             </div>
           </article>
         </div>
 
         {/* =========================
-    Row 2: Gallery Grid (9 cols, fixed height, custom spans)
-========================= */}
+            Row 2: Gallery Grid (9 cols, fixed height, custom spans)
+        ========================== */}
         {gallery?.length > 0 && (
           <div className="grid grid-cols-9 gap-2 auto-rows-[360px]">
             {gallery.map((src, i) => {

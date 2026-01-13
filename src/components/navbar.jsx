@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
-import GBLogo from "../assets/GBBlackLogo.svg";
+import GBLogo from "../assets/SVGs/GBBlackLogo.svg";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -95,7 +95,7 @@ export default function Navbar() {
 
   return (
     <nav className="nav-bar navbar">
-      <div className="nav-bar__container glass-card-border page-container">
+      <div className="nav-bar__container glass-card-border page-container blur-effect">
         <div className="nav-bar__content">
           {/* Logo */}
           <Link

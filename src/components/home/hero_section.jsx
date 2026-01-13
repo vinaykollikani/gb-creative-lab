@@ -3,7 +3,7 @@
  * Role: Hero / intro section (3 breakpoints: phone, tablet, desktop)
  */
 import React from 'react'
-import LandingPageBG from './../../assets/HomeBg.svg'
+import LandingPageBG from './../../assets/SVGs/HomeBg.svg'
 
 export default function HeroSection() {
   return (
@@ -22,13 +22,13 @@ export default function HeroSection() {
       <div className="home-hero_section wrapper flex items-center">
         <header className="w-full">
           {/* font-size changes only: phone → tablet → desktop */}
-          <h1 className="mb-4 text-3xl sm:text-4xl lg:text-7xl w-full lg:w-[60%]">
-            Lorem ipsum dolor sit amet
-            <span className="italic editorial-font hero-heading-span"> consectetur</span>
+          <h1 className="mb-4 text-3xl sm:text-4xl lg:text-7xl w-full lg:w-[70%]">
+            Design That Makes Your Brand
+            <span className="italic editorial-font hero-heading-span"> Feel Real</span>
           </h1>
 
           <p className="mb-5 text-base sm:text-lg lg:text-xl">
-            Dapibus dolor at donec eu euismod et lectus ac.
+            Everything your brand needs, all under one creative roof.
           </p>
 
           <button className="glass-btn" type="button">

@@ -1,7 +1,7 @@
 import React from "react";
-import bluedot from "../assets/Blue_dot.svg";
-import arrowType1 from "../assets/Arrow.svg";
-import projectImage1 from "../assets/Rectangle3.jpg";
+// import bluedot from "../assets/SVGs/Blue_dot.svg";
+// import arrowType1 from "../assets/SVGs/Arrow.svg";
+// import projectImage1 from "../assets/Rectangle3.jpg";
 function testpage() {
   return (
     <div className="text-2xl wrapper">

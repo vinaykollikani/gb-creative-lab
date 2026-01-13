@@ -9,6 +9,7 @@ import ServicesSection from '../components/home/services.jsx'
 import ProjectsSection from '../components/home/projects.jsx'
 import ProcessSection from '../components/home/process.jsx'
 import ContactSection from '../components/home/contact.jsx'
+import WhyChooseSection from '../components/home/whyChoose.jsx'
 
 export default function Homepage() {
   return (
@@ -18,6 +19,7 @@ export default function Homepage() {
       <ServicesSection />
       <ProjectsSection />
       <ProcessSection />
+      <WhyChooseSection />
       <ContactSection />
     </div>
   )

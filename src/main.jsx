@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client'
 
 // Global styles
 import './index.css'
-import './styles/reusable.css'
+// import './styles/reusable.css'
 
 import App from './App.jsx'
 

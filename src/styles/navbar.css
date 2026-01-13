@@ -139,7 +139,7 @@
   width: 102%;
   max-height: 100vh;
   z-index: -1; /* just under navbar */
-  padding: 72px 48px 24px;
+  padding: 86px 48px 24px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -147,7 +147,8 @@
   opacity: 0;
   pointer-events: none;
   transition: transform 1s ease, opacity 0.4s ease;
-  background-color: #0c0c0c; /* solid bg */
+  background-color: hsla(0, 0%, 5%, 0.3); /* solid bg */
+  border-radius: 16px;
 }
 
 /* When active */
@@ -225,8 +226,10 @@
 /* Mobile breakpoint */
 @media (max-width: 768px) {
   .navbar {
-    position: fixed;
+    position: static;
     top: 0;
+    margin-top: 16px;
+    z-index: 1000;
   }
   .navbar--transparent {
     background-color: rgba(20, 20, 20, 0.95);

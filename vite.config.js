@@ -51,7 +51,7 @@ export default defineConfig(({ mode }) => {
     // --------------------------------------------------------
     server: {
       host: true,       // accessible on LAN
-      port: 5173,       // standard Vite port
+      port: 5174,       // standard Vite port
       strictPort: true, // fail if port is taken (explicitness > magic)
       open: true,       // auto-open browser
     },

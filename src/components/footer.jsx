@@ -1,9 +1,7 @@
-/**
- * File: src/components/footer.jsx
- * Role: Footer (contentinfo) + social nav
- */
 import React from "react";
+import { Link } from "react-router-dom"; // Assumes react-router-dom
 
+// ... (Keep your Icon components here)
 const LinkedInIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +18,9 @@ const LinkedInIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+
     <circle cx="9" cy="8" r="2" className="stroke-current" strokeWidth="1.5" />
+
     <rect
       x="7"
       y="13"
@@ -29,6 +29,7 @@ const LinkedInIcon = () => (
       className="stroke-current"
       strokeWidth="1.5"
     />
+
     <path
       d="M20.5,13c-0.9,0-1.8,0.3-2.5,0.8V13h-4v12h4v-6.5c0-0.8,0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5V25h4v-7.5C25,15,23,13,20.5,13z"
       className="stroke-current"
@@ -56,6 +57,7 @@ const FacebookIcon = () => (
       strokeLinejoin="round"
       strokeMiterlimit="10"
     />
+
     <path
       d="M26,16h-5v-2.8c0-0.7,0.5-1.2,1.2-1.2H25V7h-4c-2.8,0-5,2.2-5,5v4h-4v5h4v10h5V21h3L26,16z"
       className="stroke-current"
@@ -83,6 +85,7 @@ const InstagramIcon = () => (
       strokeLinejoin="round"
       strokeMiterlimit="10"
     />
+
     <circle
       cx="16"
       cy="16"
@@ -90,43 +93,78 @@ const InstagramIcon = () => (
       className="stroke-current"
       strokeWidth="1.5"
     />
+
     <circle cx="24" cy="7" r="1" className="stroke-current" strokeWidth="1.5" />
   </svg>
 );
-
 export default function Footer() {
   return (
     <footer className="wrapper" role="contentinfo">
       <div className="divider footer-top-divider" aria-hidden="true"></div>
 
+      {/* Social Links (External: use <a>) */}
       <nav
         aria-label="Social links"
-        className="flex gap-12 items-stretch justify-center mt-24"
+        className="flex gap-12 items-stretch justify-center mt-12"
       >
-        <a href="http://www.linkedin.com" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
           <LinkedInIcon />
         </a>
         <span className="border border-[#FFFFFF80]" aria-hidden="true"></span>
-        <a href="http://www.instagram.com" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
           <InstagramIcon />
         </a>
         <span className="border border-[#FFFFFF80]" aria-hidden="true"></span>
-        <a href="http://www.facebook.com" aria-label="Facebook">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
           <FacebookIcon />
         </a>
       </nav>
 
+      {/* Primary Contact */}
       <a
-        href="mailto:testmail@gmail.com"
-        className="mx-auto block text-center my-14 text-[#FFFFFF80] underline"
+        href="mailto:hello@gbcreativelab.com"
+        className="mx-auto block text-center my-8 text-[#FFFFFF80] underline hover:text-white transition-colors"
       >
-        testmail@gmail.com
+        hello@gbcreativelab.com
       </a>
 
       <div className="divider footer-bottom-divider" aria-hidden="true"></div>
-      <p className="my-14 mx-auto text-center">
-        All rights reserved © GBCreativeLab
-      </p>
+
+      {/* Legal & Copyright Row */}
+      <div className="my-6 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-sm text-[#FFFFFF80]">
+        <p>All rights reserved © GBCreativeLab</p>
+
+        <nav aria-label="Legal" className="flex gap-6">
+          {/* Internal Links (Internal: use <Link>) */}
+          <Link
+            to="/legal-notice"
+            className="hover:text-white underline decoration-[#FFFFFF40]"
+          >
+            Impressum
+          </Link>
+          <Link
+            to="/privacy"
+            className="hover:text-white underline decoration-[#FFFFFF40]"
+          >
+            Datenschutz
+          </Link>
+        </nav>
+      </div>
     </footer>
   );
 }
